@@ -6,6 +6,7 @@ A lightweight, read-only web browser for [Calibre](https://calibre-ebook.com/) l
 
 ## Features
 
+- **Simple, clean UI** — access it with ease from your browser, tablet, phone or ebook reader
 - **Grid & list views** — switch between a cover grid and a compact table layout
 - **5 sort options** — by date added, title A→Z / Z→A, author A→Z / Z→A
 - **Multi-word search** — searches both titles and descriptions simultaneously
