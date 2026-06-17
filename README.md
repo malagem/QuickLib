@@ -94,7 +94,7 @@ docker compose up -d --build
 
 ## AI assistance disclosure
 
-AI code assistants Claude and DeepSeek-V4-Pro wer involved in this project at various stages of planning, writting, reviewing, refactoring, testing or documenting. All AI-generated or AI-assisted changes are reviewed, tested, and accepted by the human maintainer before being committed. Responsibility for the final code remains with the repository maintainer.
+AI code assistants Claude and DeepSeek-V4-Pro were involved in this project at various stages of planning, writting, reviewing, refactoring, testing or documenting. All AI-generated or AI-assisted changes are reviewed, tested, and accepted by the human maintainer before being committed. Responsibility for the final code remains with the repository maintainer.
 
 ## License
 
