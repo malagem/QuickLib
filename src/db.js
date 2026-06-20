@@ -8,12 +8,17 @@ if (!libraryPath) {
 }
 
 const dbPath = path.join(libraryPath, 'metadata.db');
-let db;
+
 try {
-  db = new DatabaseSync(dbPath, { readOnly: true });
+  // Validate at startup — fail fast if the path is wrong
+  new DatabaseSync(dbPath, { readOnly: true });
 } catch (err) {
   console.error(`[quicklib] Cannot open ${dbPath}: ${err.message}`);
   process.exit(1);
 }
 
-module.exports = { db, libraryPath };
+function getDb() {
+  return new DatabaseSync(dbPath, { readOnly: true });
+}
+
+module.exports = { getDb, libraryPath };

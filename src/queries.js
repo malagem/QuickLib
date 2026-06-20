@@ -1,4 +1,4 @@
-const { db } = require('./db');
+const { getDb } = require('./db');
 
 const SORT_MAP = {
   recent:      'b.timestamp DESC',
@@ -44,6 +44,7 @@ function buildWhere(search, author, tags) {
 }
 
 function getCount(search, author, tags) {
+  const db = getDb();
   const { clause, params } = buildWhere(search, author, tags);
   return db.prepare(`
     SELECT COUNT(DISTINCT b.id) AS total
@@ -55,6 +56,7 @@ function getCount(search, author, tags) {
 
 // Authors and formats use subqueries to avoid DISTINCT + custom separator limitation
 function getBooks({ search, author, tags, sort, limit, offset }) {
+  const db = getDb();
   const { clause, params } = buildWhere(search, author, tags);
   const orderBy = SORT_MAP[sort] || SORT_MAP.recent;
   return db.prepare(`
@@ -75,10 +77,12 @@ function getBooks({ search, author, tags, sort, limit, offset }) {
 }
 
 function getBookPath(id) {
+  const db = getDb();
   return db.prepare('SELECT path, has_cover FROM books WHERE id = ?').get(id);
 }
 
 function getBookFile(id, format) {
+  const db = getDb();
   return db.prepare(`
     SELECT b.path, d.name
     FROM books b
@@ -88,6 +92,7 @@ function getBookFile(id, format) {
 }
 
 function getBookDetail(id) {
+  const db = getDb();
   return db.prepare(`
     SELECT
       b.id, b.title, b.pubdate, b.has_cover, b.series_index,
@@ -116,6 +121,7 @@ function getBookDetail(id) {
 }
 
 function getTags(search, author) {
+  const db = getDb();
   const { clause, params } = buildWhere(search, author);
 
   const subset = db.prepare(`
