@@ -63,7 +63,7 @@ yourusername:sha256hashofyourpassword
 
 Generate the SHA-256 hash of your password:
 ```bash
-node -e "console.log(require('crypto').createHash('sha256').update(process.argv[1]).digest('hex'))" "yourpassword"
+node -p "require('crypto').createHash('sha256').update('yourpassword').digest('hex')"
 ```
 
 Lines starting with `#` are ignored. Reload requires a container restart.
