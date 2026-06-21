@@ -85,6 +85,8 @@ docker compose up -d --build
 | `AUTH_USERS_FILE` | *(unset)* | Path to the users file — auth disabled if absent |
 | `SESSION_SECRET` | *(required if auth enabled)* | Secret key for signing session cookies |
 | `SESSION_MAX_AGE_DAYS` | `30` | Session cookie lifetime in days |
+| `QUICKLIB_DATA_DIR` | `./data` | Host path mounted to `/app/data` (session persistence) |
+| `SESSIONS_DIR` | `./data/sessions` | Path where session files are stored inside the container |
 
 ## Tech stack
 

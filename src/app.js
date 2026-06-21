@@ -2,6 +2,7 @@ const express = require('express');
 const http    = require('http');
 const path    = require('path');
 const session = require('express-session');
+const { FileSessionStore } = require('./sessionStore');
 
 const app  = express();
 const PORT = process.env.PORT || 9095;
@@ -14,6 +15,7 @@ if (!sessionSecret) {
 }
 
 app.use(session({
+  store: new FileSessionStore(),
   secret: sessionSecret || 'quicklib-change-me',
   resave: false,
   saveUninitialized: false,

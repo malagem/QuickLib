@@ -1,11 +1,13 @@
 services:
   quicklib:
     build: .
+    container_name: "QuickLib"
     ports:
       - "9095:9095"
     volumes:
       - "${CALIBRE_LIBRARY_PATH}:/library:ro"
       - "${QUICKLIB_CONFIG_DIR:-./config}:/config:ro"
+      - "${QUICKLIB_DATA_DIR:-./data}:/app/data"
     environment:
       CALIBRE_LIBRARY_PATH: /library
       PORT: 9095
